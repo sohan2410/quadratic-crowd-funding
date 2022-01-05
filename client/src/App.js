@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 function App() {
-  const [account, setAccount] = useState();
+  const [account, setAccount] = useState(); // state variable to set account.
 
   useEffect(() => {
     async function load() {
