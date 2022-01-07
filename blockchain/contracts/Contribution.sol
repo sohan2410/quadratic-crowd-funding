@@ -35,6 +35,7 @@ contract Contribution is ProjectListing {
         emit NewContribution(_projectId, msg.value, msg.sender);
     }
 
+    //Function to return the array of contributors for particular project
     function getContributersByProjectId(uint256 _projectId)
         public
         view
@@ -43,6 +44,7 @@ contract Contribution is ProjectListing {
         return projectToContributors[_projectId];
     }
 
+    //Function to return array of contribution for particular project
     function getContributionPerProject(uint256 _projectId)
         public
         view
