@@ -15,10 +15,10 @@ contract("Contribution", function ([owner, projectOwner, contributor1, contribut
       assert.equal(logs[0].args._amount, 1);
 
       //Testing if contributor's address gets stored in map and total contribution in struct gets changed
-      const projectToContributor = await contractInstance.projectToContributors(0);
+      const projectToContributor = await contractInstance.getContributersByProjectId(0);
       const project = await contractInstance.projects(0);
       assert.equal(projectToContributor.length, 1);
-      // assert.equal(projectToContributor, contributor1);
+      assert.equal(projectToContributor[0], contributor1)
       assert.equal(project.totalContribution, 1);
   })
 

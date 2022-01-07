@@ -20,4 +20,8 @@ contract Contribution is ProjectListing {
     //emitting the New Contribution 
     emit NewContribution(_projectId, msg.value, msg.sender);
   }
+
+  function getContributersByProjectId(uint256 _projectId) public view returns(address[] memory){
+    return projectToContributors[_projectId];
+  }
 }
