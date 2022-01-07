@@ -12,6 +12,7 @@ contract Sponsors{
         sponsorsMinAmount = _minAmount;
         sponsorsDeadline = block.timestamp + 2 days;
     }
+    event sponsorDonation(address _sponsor, uint _totalAmount);
     modifier beforeEndTime(){
         require(block.timestamp < sponsorsDeadline, "Deadline has passed");
         _;
@@ -27,6 +28,8 @@ contract Sponsors{
         }
         sponsors[msg.sender]+=msg.value;
         sponsorsRaisedAmount+=msg.value;
+
+        emit sponsorDonation(msg.sender, sponsorsRaisedAmount);
     }
 
     
