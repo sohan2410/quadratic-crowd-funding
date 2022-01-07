@@ -14,9 +14,13 @@ contract("Contribution", function ([owner, projectOwner, contributor1, contribut
       assert.equal(logs[0].args._contributor, contributor1);
       assert.equal(logs[0].args._amount, 1);
 
-      //Testing if total contribution and total number of contributors increase after any contribution
+      //Testing if contributor's address gets stored in map and total contribution in struct gets changed
+      const projectToContributor = await contractInstance.projectToContributors(0);
       const project = await contractInstance.projects(0);
+      assert.equal(projectToContributor.length, 1);
+      // assert.equal(projectToContributor, contributor1);
       assert.equal(project.totalContribution, 1);
-      assert.equal(project.noOfContributors, 1);
   })
+
+  
 });
