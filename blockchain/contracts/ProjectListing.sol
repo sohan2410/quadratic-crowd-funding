@@ -13,7 +13,10 @@ contract ProjectListing {
         string tags;
         string projectImage;
         uint256 totalContribution;
+        uint256 matchAmount;
+        uint256 finalAmount;
     }
+    uint256 public createTime;
     //Array to store all the listed projects
     Project[] public projects;
 
@@ -21,7 +24,9 @@ contract ProjectListing {
     mapping(uint256 => address) public projectToOwner;
 
     
-
+    constructor(){
+        createTime = block.timestamp;
+    }
     //Function to list the projects
     function listProject(
         string memory _title,
@@ -43,6 +48,8 @@ contract ProjectListing {
                 _category,
                 _tags,
                 _projectImage,
+                0,
+                0,
                 0
             )
         );

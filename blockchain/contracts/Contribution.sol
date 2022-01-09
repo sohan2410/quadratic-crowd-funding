@@ -3,18 +3,13 @@ pragma solidity >=0.4.22 <0.9.0;
 import "./ProjectListing.sol";
 
 contract Contribution is ProjectListing {
-    address ownerOfProject;
     //Mapping to store match amount corresponding to the project Id
     mapping(uint256 => uint256) public projectIdToMatchAmount;
 
     //Mapping to store project to contributors and indivusal contributions
     mapping(uint256 => address[]) public projectToContributors;
     mapping(uint256 => uint256[]) public projectToContribution;
-
-    constructor(address _ownerOfProject) {
-        ownerOfProject = _ownerOfProject;
-    }
-
+   
     event NewContribution(
         uint256 _projectId,
         uint256 _amount,
