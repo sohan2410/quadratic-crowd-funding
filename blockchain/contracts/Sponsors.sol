@@ -9,8 +9,6 @@ contract Sponsors is Contribution{
     uint256 public noOfSponsors;
     uint256 public sponsorsDeadline;
     address public manager;
-
-    mapping(address => uint256) public matchAmount;
     
     constructor(uint256 _minAmount){
         sponsorsMinAmount = _minAmount;
@@ -51,7 +49,7 @@ contract Sponsors is Contribution{
         _;
     }
 
-    function generateMatchAmount() public onlyManager afterEndTime{
+    function generateMatchAmount() public onlyManager{
         uint total;
         for(uint i=0; i<ProjectListing.projects.length; i++) {
             Contribution.generatingMatchAmount(i);
@@ -61,6 +59,24 @@ contract Sponsors is Contribution{
             projects[i].matchAmount=(Contribution.projectIdToMatchAmount[i] * sponsorsRaisedAmount) / total; 
             projects[i].finalAmount = projects[i].matchAmount+ projects[i].totalContribution;
         }
+
+    }
+    function sendFinalAmount(uint _projectId) public payable {
+        // Checking for valid project id
+        require(_projectId <= projects.length-1, "Project not found");
+        
+        // checking if the function called is the project owner by comparing msg.sender and owner of the project
+        require(msg.sender == projects[_projectId].projectOwner, "Only project owner are allowed!");
+
+        // If the final amount is already paid to the project owner
+        require(projects[_projectId].paid == false, "Amount already paid");
+        
+        // If final amount of the project is 0
+        require(projects[_projectId].finalAmount > 0, "Sorry! No contribution for the project");
+
+        projects[_projectId].projectOwner.transfer(projects[_projectId].finalAmount);
+        projects[_projectId].paid = true;
+
 
     }
 }

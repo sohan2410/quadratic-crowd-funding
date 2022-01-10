@@ -15,6 +15,8 @@ contract ProjectListing {
         uint256 totalContribution;
         uint256 matchAmount;
         uint256 finalAmount;
+        address payable projectOwner;
+        bool paid;
     }
     uint256 public createTime;
     //Array to store all the listed projects
@@ -50,7 +52,9 @@ contract ProjectListing {
                 _projectImage,
                 0,
                 0,
-                0
+                0,
+                payable(msg.sender),
+                false
             )
         );
         uint256 _id = projects.length - 1;

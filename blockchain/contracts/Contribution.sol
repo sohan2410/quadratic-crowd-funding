@@ -4,11 +4,11 @@ import "./ProjectListing.sol";
 
 contract Contribution is ProjectListing {
     //Mapping to store match amount corresponding to the project Id
-    mapping(uint256 => uint256) public projectIdToMatchAmount;
+    mapping(uint256 => uint256)  projectIdToMatchAmount;
 
     //Mapping to store project to contributors and indivusal contributions
-    mapping(uint256 => address[]) public projectToContributors;
-    mapping(uint256 => uint256[]) public projectToContribution;
+    mapping(uint256 => address[])  projectToContributors;
+    mapping(uint256 => uint256[])  projectToContribution;
    
     event NewContribution(
         uint256 _projectId,
@@ -64,7 +64,7 @@ contract Contribution is ProjectListing {
 }
 
     //Function to calculate match amount per project
-    function generatingMatchAmount(uint256 _projectId) public {
+    function generatingMatchAmount(uint256 _projectId) internal {
         uint256 sumOfSquareRoot = 0;
         for (
             uint256 i = 0;
