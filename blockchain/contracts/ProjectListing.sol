@@ -20,11 +20,7 @@ contract ProjectListing {
     }
     uint256 public createTime;
     //Array to store all the listed projects
-    Project[] public projects;
-
-    //Mapping to store which project belongs to which address
-    mapping(uint256 => address) public projectToOwner;
-
+    Project[]  projects;
     
     constructor(){
         createTime = block.timestamp;
@@ -40,31 +36,22 @@ contract ProjectListing {
         string memory _tags,
         string memory _projectImage
     ) public {
-        projects.push(
-            Project(
-                _title,
-                _pitch,
-                _description,
-                _logo,
-                _website,
-                _category,
-                _tags,
-                _projectImage,
-                0,
-                0,
-                0,
-                payable(msg.sender),
-                false
-            )
-        );
-        uint256 _id = projects.length - 1;
-        projectToOwner[_id] = msg.sender;
+        Project storage newProject = projects.push();
+        newProject.title=_title;
+        newProject.pitch=_pitch;
+        newProject.description=_description;
+        newProject.logo=_logo;
+        newProject.website=_website;
+        newProject.category=_category;
+        newProject.tags=_tags;
+        newProject.projectImage=_projectImage;
+        newProject.projectOwner=payable(msg.sender);
+        newProject.paid=false;
     }
 
     //Function to get all the projects listed. Function is to be made to access the while array.
     function getProjects() public view returns (Project[] memory) {
         return projects;
     }
-
     
 }

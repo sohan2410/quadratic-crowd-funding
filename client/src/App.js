@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
 import Project from "./components/Project";
 import Home from "./pages/Home";
+import { init } from "./Web3";
 // import Web3 from "web3";
 function App() {
   // const [account, setAccount] = useState(); // state variable to set account.
 
-  // useEffect(() => {
-  //   async function load() {
-  //     const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
-  //     const accounts = await web3.eth.requestAccounts();
-
-  //     setAccount(accounts[0]);
-  //   }
-
-  //   load();
-  // }, []);
+  useEffect(() => {
+    init();
+  }, []);
 
   return (
     <Router>

@@ -13,7 +13,8 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^2.1.0",
-    "web3": "^1.6.1"
+    "web3": "^1.6.1",
+    "contacts": "file:../blockchain/build/contracts"
   },
   "scripts": {
     "start": "react-scripts start",
