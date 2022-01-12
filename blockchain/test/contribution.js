@@ -73,7 +73,6 @@ contract(
 
       await contractInstance.generatingMatchAmount(0);
       const matchAmount = await contractInstance.projectIdToMatchAmount(0);
-      console.log(matchAmount);
       assert.equal(matchAmount.toNumber(), 1999);
     });
   }
