@@ -1,97 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-html{
-    font-size: 62.5%;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+html {
+  font-size: 62.5%;
 }
 .mainContainer {
-    background: #536A8B;
-    font-family: 'Poppins', sans-serif;
-    padding : 1%;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-bottom: 4%;
+  background: #536a8b;
+  font-family: "Poppins", sans-serif;
+  padding: 1%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 4%;
 }
-.title{
-    text-align: center;
-    font-weight: 700;
-    font-size: 3.5rem;
-    color: white;
-    margin-top :3%;
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 3.5rem;
+  color: white;
+  margin-top: 3%;
 }
-.mainProjectContainer{
-    width : 100%;
-    display: grid;
-    margin-top :3.3%;
-    grid-template-columns : 1fr 1fr 1fr;
-    gap : 30px 20px;
-    
+.mainProjectContainer {
+  width: 100%;
+  display: grid;
+  margin-top: 3.3%;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px 20px;
 }
-.projectContainer{
-    height : 450px;
-    width : 100%;
-    background : #CDDEFF;
-    padding-top: 2%;
-    padding-bottom: 1.5%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
-    border-radius: 14px;
-    box-shadow: 0 3px 15px black;
-    cursor :pointer;
+.projectContainer {
+  height: 450px;
+  width: 100%;
+  background: #cddeff;
+  padding-top: 2%;
+  padding-bottom: 1.5%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px black;
+  cursor: pointer;
 }
-.imageContainer{
-    width : 100%;
-    height : 30%;
-    display : flex;
-    align-items : center;
-    justify-content : center;
+.imageContainer {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.projectImage{
-    width : auto;
-    height : 100%;
+.projectImage {
+  width: auto;
+  height: 100%;
 }
-.projectTitle{
-    font-size: 2.5rem;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 5%;
+.projectTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5%;
 }
-.projectDescription{
-    font-size: 1.3rem;
-    text-align: center;
+.projectDescription {
+  font-size: 1.3rem;
+  text-align: center;
 }
-.projectOwnerText, .projectOwner{
-    font-size: 1.5rem;
-    margin-top : 9%;
-    font-weight: 600;
+.projectOwnerText,
+.projectOwner {
+  font-size: 1.5rem;
+  margin-top: 9%;
+  font-weight: 600;
 }
-.projectAmountContainer{
-    background: radial-gradient(circle, rgba(105,152,171,1) 0%, rgba(26,55,77,1) 100%);
-    width : 100%;
-    height : 15%;
-    margin-top : 10%;
-    border-radius : 14px;
-    color : white;
-    padding-left : 4%;
-    padding-right : 4%;
-    padding-top : 2%;
-    padding-bottom : 2%;
-    display : flex;
-    justify-content : space-between;
-    align-items : center;
-    
-    
+.projectAmountContainer {
+  background: radial-gradient(
+    circle,
+    rgba(105, 152, 171, 1) 0%,
+    rgba(26, 55, 77, 1) 100%
+  );
+  width: 100%;
+  height: 15%;
+  margin-top: 10%;
+  border-radius: 14px;
+  color: white;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.projectAmountRaisedContainer{
-    display : flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
+.projectAmountRaisedContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
 }
-.projectAmountRaisedText{
-    font-size : 1.7rem;
-    font-weight: 600;
-    height : 15px;
+.projectAmountRaisedText {
+  font-size: 1.7rem;
+  font-weight: 600;
+  height: 15px;
 }
-.projectAmountRaisedFromText{
-    font-size: 1.2rem;
-    
+.projectAmountRaisedFromText {
+  font-size: 1.2rem;
 }

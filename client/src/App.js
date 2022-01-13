@@ -8,6 +8,7 @@ import { init } from "./redux/actions/contract";
 function App() {
   // eslint-disable-next-line
   const { contract } = useSelector(state => state);
+  console.log(contract);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(init());

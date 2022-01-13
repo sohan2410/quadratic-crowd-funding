@@ -5,10 +5,23 @@ const initialState = {
   loading: false,
   account: "",
   connectedToWallet: false,
+  projects: [],
 };
 
 const contractReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CONTRACT_TYPES.INIT:
+      var utcSeconds = action.payload.sponsorsDeadline;
+      var d = new Date(0);
+      d.setUTCSeconds(utcSeconds);
+      console.log(d, typeof d);
+      return {
+        ...state,
+        sponsorsDeadline:
+          d.getDate() + "/" + d.getMonth() + 1 + "/" + d.getFullYear(),
+        sponsorsRaisedAmount: action.payload.sponsorsRaisedAmount,
+        projects: action.payload.projects,
+      };
     case CONTRACT_TYPES.SPONSORS_DEADLINE:
       var utcSeconds = action.payload;
       var d = new Date(0);
