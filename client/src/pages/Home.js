@@ -1,4 +1,5 @@
 import * as React from "react";
+import FeaturedProjects from "../components/Home/FeautredProjects";
 const Home = () => {
   return (
     <div>
@@ -26,6 +27,7 @@ const Home = () => {
           />
         </div>
       </div>
+      <FeaturedProjects />
     </div>
   );
 };
