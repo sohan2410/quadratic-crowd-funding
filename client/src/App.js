@@ -3,17 +3,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
 import Project from "./components/Project";
 import Home from "./pages/Home";
-import { init } from "./Web3";
-// import Web3 from "web3";
+import { useSelector, useDispatch } from "react-redux";
+import { init } from "./redux/actions/contract";
 function App() {
-  // const [account, setAccount] = useState(); // state variable to set account.
-
+  // eslint-disable-next-line
+  const { contract } = useSelector(state => state);
+  const dispatch = useDispatch();
   useEffect(() => {
-    init();
-  }, []);
-
+    dispatch(init());
+  }, [dispatch]);
   return (
     <Router>
+      {/* <h6>Address: {contract.account}</h6>
+      <h6>Sponsors Deadline: {contract.sponsorsDeadline}</h6>
+      <h6>Sponsors Raised Amount: {contract.sponsorsRaisedAmount}</h6> */}
       <NavbarComponent />
       <Switch>
         <Route exact path="/">

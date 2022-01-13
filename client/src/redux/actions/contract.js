@@ -1,8 +1,13 @@
+import contract from "../../utils/Sponsors.json";
 import Web3 from "web3";
-import contract from "./utils/Sponsors.json";
 let selectedAccount, smartContract;
 
-export const init = async () => {
+export const CONTRACT_TYPES = {
+  SPONSORS_DEADLINE: "SPONSORS_DEADLINE",
+  SPONSORS_RAISEDAMOUNT: "SPONSORS_RAISEDAMOUNT",
+  ACCOUNT: "ACCOUNT",
+};
+export const init = () => async dispatch => {
   let provider = window.ethereum;
 
   if (typeof provider !== "undefined") {
@@ -11,6 +16,8 @@ export const init = async () => {
       .then(accounts => {
         selectedAccount = accounts[0];
         console.log(`selected account is ${selectedAccount}`);
+        console.log(typeof selectedAccount);
+        dispatch({ type: CONTRACT_TYPES.ACCOUNT, payload: selectedAccount });
       })
       .catch(err => {
         console.log(err);
@@ -19,30 +26,25 @@ export const init = async () => {
     window.ethereum.on("accountsChanged", accounts => {
       selectedAccount = accounts[0];
       console.log(`selected account changed to ${selectedAccount}`);
+      dispatch({ type: CONTRACT_TYPES.ACCOUNT, payload: selectedAccount });
     });
   }
   const web3 = new Web3(provider);
   const networkId = await web3.eth.net.getId();
   // const account = (await web3.eth.getAccounts())[0];
-
+  // console.log(contract.networks[networkId].address);
   smartContract = new web3.eth.Contract(
     contract.abi,
     contract.networks[networkId].address
   );
-  const temp = await smartContract.methods.sponsorsRaisedAmount().call();
-  console.log(temp);
-  console.log(await smartContract.methods.sponsorsDeadline().call());
-  // smartContract = new web3.eth.Contract(abi, address);
-  // console.log(smartContract.methods.getProjects.call());
-  // console.log(smartContract.methods.manager.call());
-  // console.log(account);
-  // console.log(
-  //   await smartContract.methods
-  //     .sendSponsorAmount()
-  //     .send({ from: account, value: web3.utils.toWei("2", "ether") }) //wei
-  // );
-  // console.log(smartContract.methods); //sponsorsRaisedAmount
-  // const temp = await smartContract.methods.sponsorsRaisedAmount().call();
-  // console.log(temp);
-  return smartContract;
+
+  dispatch({
+    type: CONTRACT_TYPES.SPONSORS_DEADLINE,
+    payload: await smartContract.methods.sponsorsDeadline().call(),
+  });
+
+  dispatch({
+    type: CONTRACT_TYPES.SPONSORS_RAISEDAMOUNT,
+    payload: await smartContract.methods.sponsorsRaisedAmount().call(),
+  });
 };

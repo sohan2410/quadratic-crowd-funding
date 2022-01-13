@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Container, Nav, NavDropdown, Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const NavbarComponent = () => {
+  const { contract } = useSelector(state => state);
+
   return (
     <div style={{ height: "10vh" }}>
       <Navbar expand="lg">
@@ -40,7 +44,19 @@ const NavbarComponent = () => {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-          <Button className="btn btn-primary">Connect to Wallet</Button>
+
+          {contract.connectedToWallet ? (
+            <Button
+              className="btn btn-primary"
+              data-toggle="tooltip"
+              data-placement="top"
+              title={`Connected to ${contract.account}`}
+            >
+              Connected to Wallet
+            </Button>
+          ) : (
+            <Button className="btn btn-primary">Connected to Wallet</Button>
+          )}
         </Container>
       </Navbar>
     </div>
