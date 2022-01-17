@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
-import Project from "./components/Project";
+import Projects from "./pages/Projects";
 import Home from "./pages/Home";
 import { useSelector, useDispatch } from "react-redux";
 import { init } from "./redux/actions/contract";
@@ -24,7 +24,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/projects">
-          <Project />
+          <Projects />
         </Route>
       </Switch>
     </Router>
