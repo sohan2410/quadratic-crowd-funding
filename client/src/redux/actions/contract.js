@@ -1,6 +1,7 @@
 import contract from "../../utils/Sponsors.json";
+import { GLOBALTYPES } from "./globalTypes";
 import Web3 from "web3";
-let selectedAccount, smartContract;
+let selectedAccount, smartContract, account;
 
 export const CONTRACT_TYPES = {
   SPONSORS_DEADLINE: "SPONSORS_DEADLINE",
@@ -32,7 +33,7 @@ export const init = () => async dispatch => {
   }
   const web3 = new Web3(provider);
   const networkId = await web3.eth.net.getId();
-  const account = (await web3.eth.getAccounts())[0];
+  account = (await web3.eth.getAccounts())[0];
   // console.log(contract.networks[networkId].address);
   smartContract = new web3.eth.Contract(
     contract.abi,
@@ -67,4 +68,61 @@ export const init = () => async dispatch => {
     type: CONTRACT_TYPES.SPONSORS_RAISEDAMOUNT,
     payload: await smartContract.methods.sponsorsRaisedAmount().call(),
   });
+  // dispatch({
+  //   type: GLOBALTYPES.ALERT,
+  //   payload: {
+  //     error: "error message",
+  //   },
+  // });
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+};
+
+// sponsors functions
+export const sendSponsorAmount = data => async dispatch => {
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  const res = await smartContract.methods
+    .sendSponsorAmount()
+    .send({ from: account, value: data.value });
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+  console.log(res);
+};
+
+export const generateMatchAmount = async dispatch => {
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  const res = await smartContract.methods
+    .generateMatchAmount()
+    .send({ from: account });
+  console.log(res);
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+};
+
+export const sendFinalAmount = data => async dispatch => {
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  const res = await smartContract.methods
+    .sendFinalAmount(data.projectId)
+    .send({ from: account });
+  console.log(res);
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+};
+
+// project listing functions
+
+export const listProject = data => async dispatch => {
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  const res = await smartContract.methods
+    .listProject(data)
+    .send({ from: account });
+  console.log(res);
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+};
+
+// contribution function
+
+export const acceptContribution = data => async dispatch => {
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  const res = await smartContract.methods
+    .acceptContribution(data)
+    .send({ from: account });
+  console.log(res);
+  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 };

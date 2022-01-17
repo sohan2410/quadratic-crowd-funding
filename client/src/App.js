@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
 import Project from "./components/Project";
 import Home from "./pages/Home";
+import Alert from "./components/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { init } from "./redux/actions/contract";
 function App() {
@@ -15,6 +16,7 @@ function App() {
   }, [dispatch]);
   return (
     <Router>
+      <Alert />
       {/* <h6>Address: {contract.account}</h6>
       <h6>Sponsors Deadline: {contract.sponsorsDeadline}</h6>
       <h6>Sponsors Raised Amount: {contract.sponsorsRaisedAmount}</h6> */}

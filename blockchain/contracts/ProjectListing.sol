@@ -11,20 +11,16 @@ contract ProjectListing {
         string website;
         string category;
         string tags;
-        string projectImage;
         uint256 totalContribution;
         uint256 matchAmount;
         uint256 finalAmount;
         address payable projectOwner;
         bool paid;
     }
-    uint256 public createTime;
     //Array to store all the listed projects
-    Project[]  projects;
+    Project[]  public projects;
     
-    constructor(){
-        createTime = block.timestamp;
-    }
+    
     //Function to list the projects
     function listProject(
         string memory _title,
@@ -33,8 +29,7 @@ contract ProjectListing {
         string memory _logo,
         string memory _website,
         string memory _category,
-        string memory _tags,
-        string memory _projectImage
+        string memory _tags
     ) public {
         Project storage newProject = projects.push();
         newProject.title=_title;
@@ -44,7 +39,6 @@ contract ProjectListing {
         newProject.website=_website;
         newProject.category=_category;
         newProject.tags=_tags;
-        newProject.projectImage=_projectImage;
         newProject.projectOwner=payable(msg.sender);
         newProject.paid=false;
     }
@@ -53,5 +47,4 @@ contract ProjectListing {
     function getProjects() public view returns (Project[] memory) {
         return projects;
     }
-    
 }

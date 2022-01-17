@@ -21,10 +21,7 @@ contract Sponsors is Contribution{
         require(block.timestamp < sponsorsDeadline, "Deadline has passed");
         _;
     }
-    modifier afterEndTime() {
-        require(block.timestamp > ProjectListing.createTime );
-        _;
-    }
+    
     modifier minAmount() {
         require(
             msg.value > sponsorsMinAmount,

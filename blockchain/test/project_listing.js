@@ -13,16 +13,14 @@ contract("ProjectListing", async ([owner, user1, user2]) => {
       "Demo logo",
       "Demo website",
       "Demo category",
-      "Demo tags",
-      "Demo image",
-      { from: user1 }
+      "Demo tags"
     );
 
     const project = await contractInstance.projects(0);
     assert.equal(project.title, "Demo project");
 
-    const Owner = await contractInstance.projectToOwner(0);
-    assert.equal(Owner, user1);
+    const Owner = await contractInstance.projects(0);
+    assert.equal(Owner.projectOwner, owner);
   });
 
   it("should list all projects", async () => {
@@ -34,7 +32,6 @@ contract("ProjectListing", async ([owner, user1, user2]) => {
       "Demo website1",
       "Demo category1",
       "Demo tags1",
-      "Demo image1",
       { from: user1 }
     );
     await contractInstance.listProject(
@@ -45,14 +42,13 @@ contract("ProjectListing", async ([owner, user1, user2]) => {
       "Demo website2",
       "Demo category2",
       "Demo tags2",
-      "Demo image2",
       { from: user2 }
     );
     const projects = await contractInstance.getProjects();
     assert.equal(projects.length, 2);
-    const Owner1 = await contractInstance.projectToOwner(0);
-    const Owner2 = await contractInstance.projectToOwner(1);
-    assert.equal(Owner1, user1);
-    assert.equal(Owner2, user2);
+    const Owner1 = await contractInstance.projects(0);
+    const Owner2 = await contractInstance.projects(1);
+    assert.equal(Owner1.projectOwner, user1);
+    assert.equal(Owner2.projectOwner, user2);
   });
 });

@@ -5,7 +5,7 @@ contract(
   function ([owner, projectOwner, contributor1, contributor2]) {
     let contractInstance;
     beforeEach(async () => {
-      contractInstance = await Contribution.new(projectOwner, { from: owner });
+      contractInstance = await Contribution.new();
       await contractInstance.listProject(
         "Demo project",
         "Demo pitch",
@@ -13,9 +13,7 @@ contract(
         "Demo logo",
         "Demo website",
         "Demo category",
-        "Demo tags",
-        "Demo image",
-        { from: projectOwner }
+        "Demo tags"
       );
     });
 
@@ -61,19 +59,19 @@ contract(
     });
 
     //Testing match amount of contributors TEST3
-    it("should generate match amount", async () => {
-      await contractInstance.acceptContribution(0, {
-        from: contributor1,
-        value: 500,
-      });
-      await contractInstance.acceptContribution(0, {
-        from: contributor2,
-        value: 500,
-      });
+    // it("should generate match amount", async () => {
+    //   await contractInstance.acceptContribution(0, {
+    //     from: contributor1,
+    //     value: 500,
+    //   });
+    //   await contractInstance.acceptContribution(0, {
+    //     from: contributor2,
+    //     value: 500,
+    //   });
 
-      await contractInstance.generatingMatchAmount(0);
-      const matchAmount = await contractInstance.projectIdToMatchAmount(0);
-      assert.equal(matchAmount.toNumber(), 1999);
-    });
+    //   await contractInstance.generatingMatchAmount(0);
+    //   const matchAmount = await contractInstance.projectIdToMatchAmount(0);
+    //   assert.equal(matchAmount.toNumber(), 1999);
+    // });
   }
 );
