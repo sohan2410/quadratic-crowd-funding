@@ -17,9 +17,14 @@ contract ProjectListing {
         address payable projectOwner;
         bool paid;
     }
+    mapping(uint256 => uint256) projectToDeposit;
+    uint256 public deposit;
     //Array to store all the listed projects
     Project[]  public projects;
     
+    constructor(uint256 _deposit){
+        deposit = _deposit;
+    }
     
     //Function to list the projects
     function listProject(
@@ -30,7 +35,7 @@ contract ProjectListing {
         string memory _website,
         string memory _category,
         string memory _tags
-    ) public {
+    ) public payable {
         Project storage newProject = projects.push();
         newProject.title=_title;
         newProject.pitch=_pitch;

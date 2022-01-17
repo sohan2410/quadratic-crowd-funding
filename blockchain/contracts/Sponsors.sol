@@ -10,9 +10,9 @@ contract Sponsors is Contribution{
     uint256 public sponsorsDeadline;
     address public manager;
     
-    constructor(uint256 _minAmount){
+    constructor(uint256 _minAmount, uint256 _deposit) ProjectListing(_deposit){
         sponsorsMinAmount = _minAmount;
-        sponsorsDeadline = block.timestamp + 2 days;
+        sponsorsDeadline = block.timestamp + 2 days; 
         manager = msg.sender;
     }
 

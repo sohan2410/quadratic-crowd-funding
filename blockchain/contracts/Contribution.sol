@@ -2,7 +2,7 @@
 pragma solidity >=0.4.22 <0.9.0;
 import "./ProjectListing.sol";
 
-contract Contribution is ProjectListing {
+abstract contract Contribution is ProjectListing {
     //Mapping to store match amount corresponding to the project Id
     mapping(uint256 => uint256)  projectIdToMatchAmount;
 
