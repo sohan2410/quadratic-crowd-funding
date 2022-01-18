@@ -17,7 +17,6 @@ const Home = () => {
   const classes = useStyles();
   return (
     <div>
-      <Button className={classes.root}>Hook</Button>;
       <div className="row mt-5">
         <div className="col-sm-8  p-5">
           <h1 className="text-primary font-weight-bold">
@@ -29,6 +28,7 @@ const Home = () => {
             for projects. Through Quadratic Funding, we give the community the
             power to take the best project forward!
           </p>
+          <Button className={classes.root}>Hook</Button>
           <button className="btn btn-primary m-4">LIST YOUR PROJECT</button>
           <button className="btn btn-primary m-4">SUPPORT PROJECTS</button>
         </div>
