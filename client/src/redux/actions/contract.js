@@ -1,4 +1,4 @@
-import contract from "../../utils/Sponsors.json";
+import contract from "../../contracts/Sponsors.json";
 import { GLOBALTYPES } from "./globalTypes";
 import Web3 from "web3";
 let selectedAccount, smartContract, account;
