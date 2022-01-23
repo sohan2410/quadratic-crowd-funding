@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-.mainContainer {
+.mainListProjectContainer {
   background-color: #719fb0;
   opacity: 0.8;
   background-image: radial-gradient(circle at center center, #726a95, #719fb0),

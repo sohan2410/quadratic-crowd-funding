@@ -14,7 +14,7 @@ const ListProjectPage = () => {
         setCategory(event.target.value);
     }
   return (
-    <div className="mainContainer">
+    <div className="mainListProjectContainer">
       <div className="container">
         <div className="topBar">
           <FontAwesomeIcon className="icon" icon={faRocket} />
