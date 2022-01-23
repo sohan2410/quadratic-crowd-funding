@@ -7,7 +7,15 @@ const NavbarComponent = () => {
   const { contract } = useSelector(state => state);
 
   return (
-    <div style={{ height: "10vh" }}>
+    <div
+      style={{
+        height: "10vh",
+        paddingLeft: "4%",
+        paddingRight: "4%",
+        paddingTop: "1%",
+        boxShadow: "0px 1px 1px grey",
+      }}
+    >
       <Navbar expand="lg">
         <Container fluid>
           <Navbar.Brand as={Link} to={"/"}>
@@ -55,7 +63,7 @@ const NavbarComponent = () => {
               Connected to Wallet
             </Button>
           ) : (
-            <Button className="btn btn-primary">Connected to Wallet</Button>
+            <Button className="btn btn-primary">Connect to Wallet</Button>
           )}
         </Container>
       </Navbar>

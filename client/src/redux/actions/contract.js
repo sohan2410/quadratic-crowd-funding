@@ -49,7 +49,6 @@ export const init = () => async dispatch => {
   //     "Demo website",
   //     "Demo category",
   //     "Demo tags",
-  //     "https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg"
   //   )
   //   .send({ from: account });
   const data = {

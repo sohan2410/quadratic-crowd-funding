@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
-import Project from "./components/Project";
 import Home from "./pages/Home";
 import Alert from "./components/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { init } from "./redux/actions/contract";
+import ProjectPage from "./pages/Projects";
 function App() {
   // eslint-disable-next-line
   const { contract } = useSelector(state => state);
@@ -26,7 +26,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/projects">
-          <Project />
+          <ProjectPage />
         </Route>
       </Switch>
     </Router>
