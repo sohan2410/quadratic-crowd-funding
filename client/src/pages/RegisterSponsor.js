@@ -41,7 +41,9 @@ const ListSponsor = () => {
             id="title"
             label="Enter Contribution Amount in ethers"
             InputProps={{
-              endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+              endAdornment: (
+                <InputAdornment position="end">ethers</InputAdornment>
+              ),
             }}
             placeholder="Contribution Amount"
             outlined="true"
