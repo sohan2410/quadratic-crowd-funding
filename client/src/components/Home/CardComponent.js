@@ -7,6 +7,7 @@ export const CardComponent = ({ project }) => {
         <img
           className="projectImage"
           src="https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg"
+          alt="project"
         />
       </div>
       <h1 className="projectTitle">{project.title}</h1>

@@ -19,12 +19,13 @@ const contractReducer = (state = initialState, action) => {
         ...state,
         sponsorsDeadline:
           d.getDate() + "/" + d.getMonth() + 1 + "/" + d.getFullYear(),
+        sponsorsMinAmount: action.payload.sponsorsMinAmount,
         sponsorsRaisedAmount: action.payload.sponsorsRaisedAmount,
         projects: action.payload.projects,
       };
     case CONTRACT_TYPES.SPONSORS_DEADLINE:
-      var utcSeconds = action.payload;
-      var d = new Date(0);
+      utcSeconds = action.payload;
+      d = new Date(0);
       d.setUTCSeconds(utcSeconds);
       console.log(d, typeof d);
       return {

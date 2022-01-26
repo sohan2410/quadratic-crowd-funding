@@ -6,6 +6,8 @@ import Alert from "./components/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { init } from "./redux/actions/contract";
 import ProjectPage from "./pages/Projects";
+import ListProjectPage from "./pages/ListProject";
+import ListSponsor from "./pages/RegisterSponsor";
 function App() {
   // eslint-disable-next-line
   const { contract } = useSelector(state => state);
@@ -27,6 +29,12 @@ function App() {
         </Route>
         <Route exact path="/projects">
           <ProjectPage />
+        </Route>
+        <Route exact path="/projects/new">
+          <ListProjectPage />
+        </Route>
+        <Route exact path="/sponsor">
+          <ListSponsor />
         </Route>
       </Switch>
     </Router>

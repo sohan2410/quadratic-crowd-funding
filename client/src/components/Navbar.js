@@ -37,7 +37,7 @@ const NavbarComponent = () => {
               <Nav.Link as={Link} to={"/projects"}>
                 Projects
               </Nav.Link>
-              <Nav.Link as={Link} to="/become-a-sponsor">
+              <Nav.Link as={Link} to="/sponsor">
                 Become a Sponsor
               </Nav.Link>
               <NavDropdown title="Link" id="navbarScrollingDropdown">

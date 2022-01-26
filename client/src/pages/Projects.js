@@ -185,6 +185,7 @@ const ProjectPage = () => {
                   <img
                     style={{ width: "auto", height: "100%" }}
                     src="https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg"
+                    alt="project"
                   />
                 </div>
                 <div style={rightContainer}>

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+.mainListProjectContainer {
+  background-color: #719fb0;
+  opacity: 0.8;
+  background-image: radial-gradient(circle at center center, #726a95, #719fb0),
+    repeating-radial-gradient(
+      circle at center center,
+      #726a95,
+      #726a95,
+      28px,
+      transparent 56px,
+      transparent 28px
+    );
+  background-blend-mode: multiply;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 90%;
+  width: 85%;
+  border-radius: 14px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.icon {
+  font-size: 7rem;
+  color: #03506f;
+  background: rgb(255, 227, 216);
+  border-radius: 50%;
+  padding: 5%;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-top: 3%;
+  color: black;
+}
+
+.form {
+  /* background-color : red; */
+  margin-top: 4%;
+  width: 90%;
+  height: 90%;
+  font-size: 3rem;
+}
+.textFieldContainer {
+  display: flex;
+  justify-content: space-between;
+}
