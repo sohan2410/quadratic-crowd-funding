@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlag } from "@fortawesome/free-solid-svg-icons";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import InputAdornment from "@mui/material/InputAdornment";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { sendSponsorAmount } from "../redux/actions/contract";
@@ -39,6 +40,9 @@ const ListSponsor = () => {
             required
             id="title"
             label="Enter Contribution Amount in ethers"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+            }}
             placeholder="Contribution Amount"
             outlined="true"
             fullWidth
