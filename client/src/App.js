@@ -8,6 +8,7 @@ import { init } from "./redux/actions/contract";
 import ProjectPage from "./pages/Projects";
 import ListProjectPage from "./pages/ListProject";
 import ListSponsor from "./pages/RegisterSponsor";
+import IndivisualProjectPage from "./pages/projectPage";
 function App() {
   // eslint-disable-next-line
   const { contract } = useSelector(state => state);
@@ -35,6 +36,9 @@ function App() {
         </Route>
         <Route exact path="/sponsor">
           <ListSponsor />
+        </Route>
+        <Route exact path="/projectpage">
+          <IndivisualProjectPage />
         </Route>
       </Switch>
     </Router>

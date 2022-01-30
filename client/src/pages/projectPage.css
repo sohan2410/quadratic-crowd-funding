@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+.projectPageTop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color : #2D4263;
+    height : 40vh;
+}
+.projectPageLogoDiv{
+    height : "70%";
+    width : "auto";
+}
+.logoProjectPage{
+    height : "100%";
+    width : "auto";
+}
+.projectPageBottomContainer{
+    padding : 2%;
+    background :#EEEEEE;
+    padding-left: 4%;
+    font-family: "Poppins", sans-serif;
+    padding-right: 4%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.projectLeft{
+    width : 60%;
+}
+.projectRight{
+    width : 35%;
+}
+.projectBox{
+    border : 0.5px solid grey;
+    background : white;
+    border-radius: 14px;
+    padding : 2%;
+
+}
+.projectPageDescription{
+    font-size: 1.6rem;
+    margin-top:3%;
+}
+.projectOwnerBox{
+    border : 0.5px solid grey;
+    background : white;
+    border-radius: 14px;
+    padding : 2%;
+    margin-top: 4%;
+}
+.projectOwnerDiv{
+    display : flex;
+    /* background : red; */
+    width : "100%";
+
+}
+.projectImageOnwerDiv{
+    height : "20px";
+    border-radius : "50%";
+    background : green;
+
+}
+.projectOwnerImage{
+    height : "100%";
+    width : "auto";
+}
+.projectAmountBox{
+    border : 0.5px solid grey;
+    background : white;
+    border-radius: 14px;
+    padding : 3%;
+    
+}
+.projectAmountDivider{
+    width : "90%";
+    background : grey;
+    height : 1px;
+    margin-top : 10px;
+}
+.projectCategoryBox{
+    border : 0.5px solid grey;
+    background : white;
+    border-radius: 14px;
+    padding : 3%;
+    margin-top : 5%;
+}
