@@ -6,6 +6,7 @@ const initialState = {
   account: "",
   connectedToWallet: false,
   projects: [],
+  project: [],
 };
 
 const contractReducer = (state = initialState, action) => {
@@ -44,6 +45,11 @@ const contractReducer = (state = initialState, action) => {
         ...state,
         account: action.payload,
         connectedToWallet: true,
+      };
+    case CONTRACT_TYPES.PROJECT:
+      return {
+        ...state,
+        project: action.payload,
       };
     default:
       return state;

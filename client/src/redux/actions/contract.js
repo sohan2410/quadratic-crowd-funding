@@ -8,6 +8,7 @@ export const CONTRACT_TYPES = {
   SPONSORS_RAISEDAMOUNT: "SPONSORS_RAISEDAMOUNT",
   ACCOUNT: "ACCOUNT",
   INIT: "INIT",
+  PROJECT: "PROJECT",
 };
 export const init = () => async dispatch => {
   let provider = window.ethereum;
@@ -121,8 +122,9 @@ export const sendFinalAmount = data => async dispatch => {
 
 // project listing functions
 
-export const listProject = data => async dispatch => {
+export const listProject = (data, link) => async dispatch => {
   dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  data.logo = link;
   console.log(data);
   try {
     const res = await smartContract.methods
@@ -152,6 +154,22 @@ export const listProject = data => async dispatch => {
   }
 };
 
+export const getProject = id => async dispatch => {
+  try {
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+    const res = await smartContract.methods.projects("0").call();
+    dispatch({
+      type: CONTRACT_TYPES.PROJECT,
+      payload: res,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: { error: error.message },
+    });
+  }
+};
 // contribution function
 
 export const acceptContribution = data => async dispatch => {

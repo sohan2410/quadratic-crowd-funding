@@ -37,7 +37,7 @@ function App() {
         <Route exact path="/sponsor">
           <ListSponsor />
         </Route>
-        <Route exact path="/projectpage">
+        <Route exact path="/project/:id">
           <IndivisualProjectPage />
         </Route>
       </Switch>

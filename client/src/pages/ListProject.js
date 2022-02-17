@@ -10,6 +10,22 @@ import { useDispatch } from "react-redux";
 import { listProject } from "../redux/actions/contract";
 const ListProjectPage = () => {
   const dispatch = useDispatch();
+  const [logo, setLogo] = useState();
+
+  const uploadImage = async file => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "xifvk2us");
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/sarvh/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const data = await res.json();
+    return data.secure_url;
+  };
   const [values, setValues] = useState([
     {
       title: "",
@@ -22,10 +38,11 @@ const ListProjectPage = () => {
     },
   ]);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    console.log(values);
-    dispatch(listProject(values));
+
+    const link = await uploadImage(logo);
+    dispatch(listProject(values, link));
   };
   return (
     <div className="mainListProjectContainer">
@@ -45,14 +62,26 @@ const ListProjectPage = () => {
               onChange={e => setValues({ ...values, title: e.target.value })}
               style={{ width: "48%", color: "black" }}
             />
-            <TextField
+            <div style={{ width: "48%", color: "black" }}>
+              <label for="formFile" class="form-label">
+                Select Logo
+              </label>
+              <input
+                type="file"
+                onChange={event => {
+                  setLogo(event.target.files[0]);
+                  // setValues({ ...values, logo: event.target.files[0] });
+                }}
+              />
+            </div>
+            {/* <TextField
               className="textField"
               required
               id="logo"
               label="Enter Project Logo URL"
               onChange={e => setValues({ ...values, logo: e.target.value })}
               style={{ width: "48%", color: "black" }}
-            />
+            /> */}
           </div>
           <TextField
             required

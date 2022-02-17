@@ -25,7 +25,6 @@ contract ProjectListing {
     constructor(uint256 _deposit){
         deposit = _deposit;
     }
-    
     //Function to list the projects
     function listProject(
         string memory _title,
@@ -36,6 +35,7 @@ contract ProjectListing {
         string memory _category,
         string memory _tags
     ) public payable {
+        require(msg.value==deposit, "Security deposit required");
         Project storage newProject = projects.push();
         newProject.title=_title;
         newProject.pitch=_pitch;

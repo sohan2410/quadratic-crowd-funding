@@ -12,7 +12,7 @@ contract Sponsors is Contribution{
     
     constructor(uint256 _minAmount, uint256 _deposit) ProjectListing(_deposit){
         sponsorsMinAmount = _minAmount;
-        sponsorsDeadline = block.timestamp + 2 days; 
+        sponsorsDeadline = block.timestamp + 15 days; 
         manager = msg.sender;
     }
 
@@ -71,7 +71,7 @@ contract Sponsors is Contribution{
         // If final amount of the project is 0
         require(projects[_projectId].finalAmount > 0, "Sorry! No contribution for the project");
 
-        projects[_projectId].projectOwner.transfer(projects[_projectId].finalAmount);
+        projects[_projectId].projectOwner.transfer(projects[_projectId].finalAmount+deposit);
         projects[_projectId].paid = true;
 
 

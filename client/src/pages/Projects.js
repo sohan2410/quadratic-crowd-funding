@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import "./Projects.css";
+import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Projects.css";
@@ -179,19 +180,21 @@ const ProjectPage = () => {
           {/* Project1 */}
           {contract &&
             contract.projects.length > 0 &&
-            contract.projects.map(project => (
+            contract.projects.map((project, i) => (
               <div style={projects}>
                 <div style={imageContainer}>
                   <img
                     style={{ width: "auto", height: "100%" }}
-                    src="https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg"
+                    src={project.logo}
                     alt="project"
                   />
                 </div>
                 <div style={rightContainer}>
-                  <h3 style={{ fontSize: "2rem", fontWeight: "600" }}>
-                    {project.title}
-                  </h3>
+                  <Link to={"/project/" + i}>
+                    <h3 style={{ fontSize: "2rem", fontWeight: "600" }}>
+                      {project.title}
+                    </h3>
+                  </Link>
                   <p style={{ fontSize: "1.5rem" }}>{project.pitch}</p>
                   <p
                     style={{
