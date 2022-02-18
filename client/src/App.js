@@ -9,6 +9,7 @@ import ProjectPage from "./pages/Projects";
 import ListProjectPage from "./pages/ListProject";
 import ListSponsor from "./pages/RegisterSponsor";
 import IndivisualProjectPage from "./pages/projectPage";
+import Fund from "./pages/Fund";
 function App() {
   // eslint-disable-next-line
   const { contract } = useSelector(state => state);
@@ -20,9 +21,6 @@ function App() {
   return (
     <Router>
       <Alert />
-      {/* <h6>Address: {contract.account}</h6>
-      <h6>Sponsors Deadline: {contract.sponsorsDeadline}</h6>
-      <h6>Sponsors Raised Amount: {contract.sponsorsRaisedAmount}</h6> */}
       <NavbarComponent />
       <Switch>
         <Route exact path="/">
@@ -39,6 +37,9 @@ function App() {
         </Route>
         <Route exact path="/project/:id">
           <IndivisualProjectPage />
+        </Route>
+        <Route exact path="/fund">
+          <Fund />
         </Route>
       </Switch>
     </Router>

@@ -157,11 +157,12 @@ export const listProject = (data, link) => async dispatch => {
 export const getProject = id => async dispatch => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await smartContract.methods.projects("0").call();
+    const res = await smartContract.methods.projects(id).call();
     dispatch({
       type: CONTRACT_TYPES.PROJECT,
       payload: res,
     });
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
   } catch (error) {
     console.log(error);
     dispatch({
