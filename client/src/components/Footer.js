@@ -32,7 +32,7 @@ const FooterComponent = () => {
         </a>
       </p>
       <a
-        href="/"
+        href="https://github.com/sohan2410/quadratic-crowd-funding"
         style={{ textDecoration: "none", color: "black", marginTop: "2%" }}
       >
         <GitHubIcon style={{ fontSize: "3rem" }} />

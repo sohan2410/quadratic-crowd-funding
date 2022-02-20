@@ -4,11 +4,7 @@ export const CardComponent = ({ project }) => {
   return (
     <div className="projectContainer">
       <div className="imageContainer">
-        <img
-          className="projectImage"
-          src={project.logo}
-          alt="project"
-        />
+        <img className="projectImage" src={project.logo} alt="project" />
       </div>
       <h1 className="projectTitle">{project.title}</h1>
       <p className="projectDescription">{project.description}</p>
@@ -20,7 +16,7 @@ export const CardComponent = ({ project }) => {
         <div className="projectAmountRaisedContainer">
           <p className="projectAmountRaisedText">{project.totalContribution}</p>
           <p className="projectAmountRaisedFromText">
-            Raised from <span>10 </span>Contributor(s)
+            Raised from Contributor(s)
           </p>
         </div>
         <div className="projectAmountRaisedContainer">

@@ -139,7 +139,7 @@ const ListProjectPage = () => {
             <MenuItem value="others">Others</MenuItem>
           </TextField>
           <Typography>
-            Note: Taking 1 eth as security deposit from projects. In case they
+            Note: Taking 0.5 eth as security deposit from projects. In case they
             turn out to be a scam, they will lose their deposit as well as any
             funding they have received.{" "}
           </Typography>
