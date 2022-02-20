@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarComponent from "./components/Navbar";
+import FooterComponent from "./components/Footer";
 import Home from "./pages/Home";
 import Alert from "./components/Alert";
 import { useSelector, useDispatch } from "react-redux";
@@ -42,6 +43,7 @@ function App() {
           <Fund />
         </Route>
       </Switch>
+      <FooterComponent />
     </Router>
   );
 }

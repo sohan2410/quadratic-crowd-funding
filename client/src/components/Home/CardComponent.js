@@ -6,7 +6,7 @@ export const CardComponent = ({ project }) => {
       <div className="imageContainer">
         <img
           className="projectImage"
-          src="https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg"
+          src={project.logo}
           alt="project"
         />
       </div>

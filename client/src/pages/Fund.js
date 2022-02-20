@@ -4,8 +4,8 @@ import ReactPlayer from "react-player";
 const Fund = () => {
   return (
     <div>
-      <div className="container-lg my-5 row">
-        <div className="col-sm-8 p-5">
+      <div className="container-lg my-5 row" style={{paddingLeft : "5%"}}>
+        <div className="col-sm-8 p-5" style={{width : "50%"}}>
           <h1 className="p-4">
             There's No Better Way To Fund Open Source Projects
           </h1>
@@ -14,21 +14,21 @@ const Fund = () => {
             greates public good get the most support
           </h3>
           <Link to={"/projects"}>
-            <button className="btn btn-primary m-4">Fund Grants</button>
+            <button style={{width : "50%",marginTop : "3%",fontSize : "1.5rem", background : "#92A9BD", border : "none", borderRadius : "9px", padding : "1%", color : "white", fontWeight : "bold"}}>Fund Grants</button>
           </Link>
         </div>
-        <div className="col align-self-center">
+        <div className="col align-self-center" style={{marginLeft : "5%"}}>
           <img
             src="/fund_image.jpg"
-            width="350"
-            height="400"
+            width="500px"
+            height="300px"
             alt="fund_image"
           />
         </div>
       </div>
 
-      <div className="container-lg my-5 row">
-        <div className="col-sm-8 p-5">
+      <div className="container-lg my-5 row" style={{paddingLeft : "5%"}}>
+        <div className="col-sm-8 p-5" style={{width : "50%"}}>
           <h1 className="p-4">Why quadratic funding?</h1>
           <h3 className="p-4">
             Quadratic Funding is the optimal way to fund public goods in a
@@ -38,11 +38,11 @@ const Fund = () => {
             funds a project gets.
           </h3>
         </div>
-        <div className="col align-self-center">
+        <div className="col align-self-center"  style={{marginLeft : "5%"}}>
           <ReactPlayer
             className="react-player"
-            width="100%"
-            height="100%"
+            width="500px"
+            height="250px"
             url="https://www.youtube.com/watch?v=HJljTtLnymE"
           />
         </div>

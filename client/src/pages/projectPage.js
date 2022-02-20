@@ -44,7 +44,7 @@ const IndivisualProjectPage = () => {
                 </p>
               </div>
               <div className="projectOwnerBox">
-                <h1 className="projectBoxTitle">{contract.project.title}</h1>
+                <h1 className="projectBoxTitle">Project Owner</h1>
                 <div className="projectOwnerDiv">
                   <div className="projectImageOnwerDiv">
                     <img
@@ -59,7 +59,7 @@ const IndivisualProjectPage = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> 
             <div className="projectRight">
               <div className="projectAmountBox">
                 <h3 style={{ fontWeight: "700" }}>Total Collection</h3>

@@ -55,7 +55,7 @@ const ListSponsor = () => {
             color="primary"
             variant="outlined"
             className="Sponsorbtn"
-            style={{ marginTop: "2%", fontSize: "2rem", width: "48%" }}
+            style={{ marginTop: "10%", fontSize: "2rem", width: "48%" }}
           >
             Submit
           </Button>
