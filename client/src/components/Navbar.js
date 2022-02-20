@@ -1,11 +1,25 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+
 import { Container, Nav, Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { generateMatchAmount } from "../redux/actions/contract";
 const NavbarComponent = () => {
-  const { contract } = useSelector(state => state);
+  const dispatch = useDispatch();
 
+  const { contract } = useSelector(state => state);
+  const [admin, setAdmin] = React.useState(false);
+  useEffect(() => {
+    if (contract.account === contract.manager) {
+      setAdmin(true);
+    }
+  }, []);
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(generateMatchAmount());
+  };
+  //generateMatchAmount
   return (
     <div
       style={{
@@ -65,7 +79,11 @@ const NavbarComponent = () => {
               </NavDropdown> */}
             </Nav>
           </Navbar.Collapse>
-
+          {admin && (
+            <Button style={{ marginRight: "3%" }} onClick={handleSubmit}>
+              Generate Match Amount
+            </Button>
+          )}
           {contract.connectedToWallet ? (
             <Button
               className="btn btn-primary"

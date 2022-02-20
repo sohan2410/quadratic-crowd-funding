@@ -11,6 +11,7 @@ export const CONTRACT_TYPES = {
   PROJECT: "PROJECT",
   SECURITY_DEPOSIT: "SECURITY_DEPOSIT",
   SPONSORS_MINAMOUNT: "SPONSORS_MINAMOUNT",
+  MANAGER: "MANAGER",
 };
 export const init = () => async dispatch => {
   let provider = window.ethereum;
@@ -43,7 +44,8 @@ export const init = () => async dispatch => {
     contract.abi,
     contract.networks[networkId].address
   );
-  let data = {
+  let data = {};
+  data = {
     sponsorsDeadline: await smartContract.methods.sponsorsDeadline().call(),
     sponsorsRaisedAmount: await smartContract.methods
       .sponsorsRaisedAmount()
@@ -76,6 +78,10 @@ export const init = () => async dispatch => {
     type: CONTRACT_TYPES.SECURITY_DEPOSIT,
     payload: await smartContract.methods.deposit().call(),
   });
+  dispatch({
+    type: CONTRACT_TYPES.MANAGER,
+    payload: await smartContract.methods.manager().call(),
+  });
   console.log(await smartContract.methods.deposit().call());
 };
 
@@ -105,13 +111,18 @@ export const sendSponsorAmount = amount => async dispatch => {
   }
 };
 
-export const generateMatchAmount = async dispatch => {
-  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-  const res = await smartContract.methods
-    .generateMatchAmount()
-    .send({ from: account });
-  console.log(res);
-  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+export const generateMatchAmount = data => async dispatch => {
+  console.log("generateMatchAmount");
+  try {
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+    const res = await smartContract.methods.generateMatchAmount().call();
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
+  } catch (error) {
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: { error: error.message },
+    });
+  }
 };
 
 export const sendFinalAmount = data => async dispatch => {

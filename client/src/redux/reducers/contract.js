@@ -9,6 +9,7 @@ const initialState = {
   connectedToWallet: false,
   projects: [],
   project: [],
+  manager: "",
 };
 
 const contractReducer = (state = initialState, action) => {
@@ -63,6 +64,11 @@ const contractReducer = (state = initialState, action) => {
       return {
         ...state,
         project: action.payload,
+      };
+    case CONTRACT_TYPES.MANAGER:
+      return {
+        ...state,
+        manager: action.payload,
       };
     default:
       return state;
