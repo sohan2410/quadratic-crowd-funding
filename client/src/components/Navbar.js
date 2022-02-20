@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, Nav, NavDropdown, Button, Navbar } from "react-bootstrap";
+import { Container, Nav, Button, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -31,7 +31,17 @@ const NavbarComponent = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{fontSize : "1.3rem",marginLeft : "4%" ,display : "flex",width : "40%",justifyContent : "space-evenly",fontWeight : "bold",maxHeight: "80%", font : "Poppins", color : "black"}}
+              style={{
+                fontSize: "1.3rem",
+                marginLeft: "4%",
+                display: "flex",
+                width: "40%",
+                justifyContent: "space-evenly",
+                fontWeight: "bold",
+                maxHeight: "80%",
+                font: "Poppins",
+                color: "black",
+              }}
               navbarScroll
             >
               <Nav.Link as={Link} to={"/projects"}>
@@ -40,7 +50,7 @@ const NavbarComponent = () => {
               <Nav.Link as={Link} to="/sponsor">
                 Become a Sponsor
               </Nav.Link>
-              <Nav.Link as={Link} to="/fund">
+              <Nav.Link as={Link} to="/learn">
                 Learn
               </Nav.Link>
               {/* <NavDropdown title="Link" id="navbarScrollingDropdown">

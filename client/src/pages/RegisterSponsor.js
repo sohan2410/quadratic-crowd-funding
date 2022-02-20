@@ -25,6 +25,8 @@ const ListSponsor = () => {
               <>
                 <h3>Sponsors Raised Amount: {contract.sponsorsRaisedAmount}</h3>
                 <h3>Sponsors Deadline: {contract.sponsorsDeadline}</h3>
+                <h3>Sponsors Min Amount: {contract.sponsorsMinAmount}</h3>
+                <h3>Security Deposit: {contract.securityDeposit}</h3>
               </>
             )}
           <FontAwesomeIcon className="Sponsoricon" icon={faFlag} />
@@ -40,10 +42,10 @@ const ListSponsor = () => {
             required
             id="title"
             label="Enter Contribution Amount in ethers"
+            type="number"
             InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">ethers</InputAdornment>
-              ),
+              inputProps: { min: 10000, max: 100000000000 },
+              endAdornment: <InputAdornment position="end">wei</InputAdornment>,
             }}
             placeholder="Contribution Amount"
             outlined="true"

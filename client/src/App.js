@@ -39,7 +39,7 @@ function App() {
         <Route exact path="/project/:id">
           <IndivisualProjectPage />
         </Route>
-        <Route exact path="/fund">
+        <Route exact path="/learn">
           <Fund />
         </Route>
       </Switch>

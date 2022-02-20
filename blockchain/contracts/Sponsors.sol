@@ -24,7 +24,7 @@ contract Sponsors is Contribution{
     
     modifier minAmount() {
         require(
-            msg.value > sponsorsMinAmount,
+            msg.value >= sponsorsMinAmount,
             "Minimum Contribution is not met"
         );
         _;

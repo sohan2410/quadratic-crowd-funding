@@ -2,6 +2,8 @@ import { CONTRACT_TYPES } from "../actions/contract";
 const initialState = {
   sponsorsDeadline: 0,
   sponsorsRaisedAmount: 0,
+  sponsorsMinAmount: 0,
+  securityDeposit: 0,
   loading: false,
   account: "",
   connectedToWallet: false,
@@ -38,6 +40,17 @@ const contractReducer = (state = initialState, action) => {
       return {
         ...state,
         sponsorsRaisedAmount: action.payload,
+      };
+
+    case CONTRACT_TYPES.SPONSORS_MINAMOUNT:
+      return {
+        ...state,
+        sponsorsMinAmount: action.payload,
+      };
+    case CONTRACT_TYPES.SECURITY_DEPOSIT:
+      return {
+        ...state,
+        securityDeposit: action.payload,
       };
     case CONTRACT_TYPES.ACCOUNT:
       console.log(action.payload);

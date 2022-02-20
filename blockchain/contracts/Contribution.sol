@@ -7,8 +7,8 @@ abstract contract Contribution is ProjectListing {
     mapping(uint256 => uint256)  projectIdToMatchAmount;
 
     //Mapping to store project to contributors and indivusal contributions
-    mapping(uint256 => address[])  projectToContributors;
-    mapping(uint256 => uint256[])  projectToContribution;
+    mapping(uint256 => address[]) public projectToContributors;
+    mapping(uint256 => uint256[]) projectToContribution;
    
     event NewContribution(
         uint256 _projectId,

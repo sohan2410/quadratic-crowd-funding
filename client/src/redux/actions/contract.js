@@ -9,6 +9,8 @@ export const CONTRACT_TYPES = {
   ACCOUNT: "ACCOUNT",
   INIT: "INIT",
   PROJECT: "PROJECT",
+  SECURITY_DEPOSIT: "SECURITY_DEPOSIT",
+  SPONSORS_MINAMOUNT: "SPONSORS_MINAMOUNT",
 };
 export const init = () => async dispatch => {
   let provider = window.ethereum;
@@ -28,6 +30,7 @@ export const init = () => async dispatch => {
 
     window.ethereum.on("accountsChanged", accounts => {
       selectedAccount = accounts[0];
+
       console.log(`selected account changed to ${selectedAccount}`);
       dispatch({ type: CONTRACT_TYPES.ACCOUNT, payload: selectedAccount });
     });
@@ -40,19 +43,7 @@ export const init = () => async dispatch => {
     contract.abi,
     contract.networks[networkId].address
   );
-
-  // await smartContract.methods
-  //   .listProject(
-  //     "Project C",
-  //     "Demo pitch",
-  //     "Demo description",
-  //     "https://cdn.pixabay.com/photo/2018/01/18/07/31/bitcoin-3089728__480.jpg",
-  //     "Demo website",
-  //     "Demo category",
-  //     "Demo tags",
-  //   )
-  //   .send({ from: account });
-  const data = {
+  let data = {
     sponsorsDeadline: await smartContract.methods.sponsorsDeadline().call(),
     sponsorsRaisedAmount: await smartContract.methods
       .sponsorsRaisedAmount()
@@ -60,6 +51,14 @@ export const init = () => async dispatch => {
     projects: await smartContract.methods.getProjects().call(),
     sponsorsMinAmount: await smartContract.methods.sponsorsMinAmount().call(),
   };
+  // Object.preventExtensions(data);
+  // data.projects.map(async (project, i) => {
+  //   let contributors = await smartContract.methods
+  //     .getContributersByProjectId(i)
+  //     .call();
+  //   contributors = [...new Set(contributors)];
+  //   project.contributors = contributors;
+  // });
   dispatch({
     type: CONTRACT_TYPES.INIT,
     payload: data,
@@ -69,13 +68,15 @@ export const init = () => async dispatch => {
     type: CONTRACT_TYPES.SPONSORS_RAISEDAMOUNT,
     payload: await smartContract.methods.sponsorsRaisedAmount().call(),
   });
-  // dispatch({
-  //   type: GLOBALTYPES.ALERT,
-  //   payload: {
-  //     error: "error message",
-  //   },
-  // });
-  // dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+  dispatch({
+    type: CONTRACT_TYPES.SPONSORS_MINAMOUNT,
+    payload: await smartContract.methods.sponsorsMinAmount().call(),
+  });
+  dispatch({
+    type: CONTRACT_TYPES.SECURITY_DEPOSIT,
+    payload: await smartContract.methods.deposit().call(),
+  });
+  console.log(await smartContract.methods.deposit().call());
 };
 
 // sponsors functions
@@ -83,9 +84,11 @@ export const sendSponsorAmount = amount => async dispatch => {
   console.log(amount, typeof amount);
   dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
   try {
-    const res = await smartContract.methods
-      .sendSponsorAmount()
-      .send({ from: account, value: web3.utils.toWei(amount, "ether") });
+    const res = await smartContract.methods.sendSponsorAmount().send({
+      from: account,
+      value: amount, //in wei
+      //  value: web3.utils.toWei(amount, "ether")
+    });
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {
@@ -137,7 +140,10 @@ export const listProject = (data, link) => async dispatch => {
         data.category,
         data.tags
       )
-      .send({ from: account });
+      .send({
+        from: account,
+        value: 500000000000000000, //wei
+      });
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: false } });
     if (res.status) {
       dispatch({
@@ -146,7 +152,7 @@ export const listProject = (data, link) => async dispatch => {
       });
     }
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: { error: error.message },
@@ -158,6 +164,11 @@ export const getProject = id => async dispatch => {
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     const res = await smartContract.methods.projects(id).call();
+    let contributors = await smartContract.methods
+      .getContributersByProjectId(id)
+      .call();
+    contributors = [...new Set(contributors)];
+    res.contributors = contributors;
     dispatch({
       type: CONTRACT_TYPES.PROJECT,
       payload: res,
@@ -173,11 +184,29 @@ export const getProject = id => async dispatch => {
 };
 // contribution function
 
-export const acceptContribution = data => async dispatch => {
-  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-  const res = await smartContract.methods
-    .acceptContribution(data)
-    .send({ from: account });
-  console.log(res);
-  dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-};
+export const acceptContribution =
+  ({ id, amount }) =>
+  async dispatch => {
+    try {
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+      console.log(account);
+      console.log(id, amount);
+
+      const res = await smartContract.methods
+        .acceptContribution(id)
+        .send({ from: account, value: amount });
+      console.log(res);
+      if (res.status) {
+        dispatch({
+          type: GLOBALTYPES.ALERT,
+          payload: { success: "Thank you for your contribution" },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: { error: error.message },
+      });
+    }
+  };
