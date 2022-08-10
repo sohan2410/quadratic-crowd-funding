@@ -46,7 +46,7 @@ We aim to provide a trustful and transparent platform for crowdfunding projects 
 # Instruction for local setup
 1. [Clone the repository](https://github.com/sohan2410/quadratic-crowd-funding.git)
 ```sh
-git clone https://github.com/sohan2410/aasf-website-backend.git
+git clone https://github.com/sohan2410/quadratic-crowd-funding.git
 ```
 2. Install truffle package globally
 ```sh
