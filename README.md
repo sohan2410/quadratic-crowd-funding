@@ -44,7 +44,7 @@
 # Thought Behind The Project
 We aim to provide a trustful and transparent platform for crowdfunding projects that needs financial help using blockchain technology. Also, we help sponsors put their money rightly using a quadratic crowdfunding system. A greater ratio of sponsors' money is given to projects that have received more contributions from people and not just more amount from few people. Thus, we think of bringing the best projects forward.
 # Instruction for local setup
-1. [Clone the repository](https://github.com/sohan2410/aasf-website-backend.git)
+1. [Clone the repository](https://github.com/sohan2410/quadratic-crowd-funding.git)
 ```sh
 git clone https://github.com/sohan2410/aasf-website-backend.git
 ```
